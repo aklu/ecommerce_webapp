@@ -1,4 +1,4 @@
-namespace ManitowocCoffeeCompany.Views.Product
+namespace ManitowocCoffeeCompany.Models
 {
     using System;
     using System.Data.Entity;
@@ -8,7 +8,7 @@ namespace ManitowocCoffeeCompany.Views.Product
     {
         // Your context has been configured to use a 'MCCContext' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'ManitowocCoffeeCompany.Views.Product.MCCContext' database on your LocalDb instance. 
+        // 'ManitowocCoffeeCompany.Models.MCCContext' database on your LocalDb instance. 
         // 
         // If you wish to target a different database and/or database provider, modify the 'MCCContext' 
         // connection string in the application configuration file.

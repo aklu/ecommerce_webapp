@@ -22,7 +22,11 @@ namespace ManitowocCoffeeCompany.Controllers
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            using(MCCContext context = new MCCContext())
+            {
+                Product p = context.Products.Find(id);
+                return View(p);
+            }
         }
 
         // GET: Product/Create
@@ -33,13 +37,16 @@ namespace ManitowocCoffeeCompany.Controllers
 
         // POST: Product/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Product obj)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                using(MCCContext context = new MCCContext())
+                {
+                    context.Products.Add(obj);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
@@ -50,7 +57,12 @@ namespace ManitowocCoffeeCompany.Controllers
         // GET: Product/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Product result = null;
+            using(MCCContext context = new MCCContext())
+            {
+                result = context.Products.Find(id);
+                return View(result);
+            }
         }
 
         // POST: Product/Edit/5
@@ -59,9 +71,13 @@ namespace ManitowocCoffeeCompany.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                using(MCCContext context = new MCCContext())
+                {
+                    var p = context.Products.Find(id);
+                    TryUpdateModel(p);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
@@ -72,7 +88,12 @@ namespace ManitowocCoffeeCompany.Controllers
         // GET: Product/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Product result = null;
+            using (MCCContext context = new MCCContext())
+            {
+                result = context.Products.Find(id);
+                return View(result);
+            }
         }
 
         // POST: Product/Delete/5
@@ -81,9 +102,13 @@ namespace ManitowocCoffeeCompany.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                using (MCCContext context = new MCCContext())
+                {
+                    var p = context.Products.Find(id);
+                    context.Products.Remove(p);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
