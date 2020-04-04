@@ -23,6 +23,11 @@ textarea {
     max-width: 280px;
 }
 
-.jumbotron h1{
-    background-image: url(images/coffeeroasting.jpg);
+.jumbotron {
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(images/coffee.jpg);
+    background-size: cover;
+}
+img {
+    width: 10%;
+    height: 50px;
 }
